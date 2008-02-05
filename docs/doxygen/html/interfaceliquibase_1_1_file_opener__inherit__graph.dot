@@ -1,0 +1,19 @@
+digraph G
+{
+  edge [fontname="FreeSans.ttf",fontsize=10,labelfontname="FreeSans.ttf",labelfontsize=10];
+  node [fontname="FreeSans.ttf",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="liquibase.FileOpener",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node2 [label="liquibase.ant.AntFileOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_ant_file_opener.html",tooltip="An implementation of FileOpener that is specific to how Ant works."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 [label="liquibase.ClassLoaderFileOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1_class_loader_file_opener.html",tooltip="An implementation of liquibase.FileOpener that opens file from the class loader."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node4 [label="liquibase.commandline.CommandLineFileOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1commandline_1_1_command_line_file_opener.html",tooltip="Implementation of liquibase.FileOpener for the command line app."];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node5 [label="liquibase.CompositeFileOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1_composite_file_opener.html",tooltip="A FileOpener that will search in a List of other FileOpeners until it finds one that..."];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node6 [label="liquibase.FileSystemFileOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1_file_system_file_opener.html",tooltip="A FileOpener implementation which finds Files in the File System."];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node7 [label="liquibase.spring.SpringLiquibase.SpringResourceOpener",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1spring_1_1_spring_liquibase_1_1_spring_resource_opener.html"];
+}

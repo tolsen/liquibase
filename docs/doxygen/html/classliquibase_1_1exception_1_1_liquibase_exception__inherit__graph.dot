@@ -1,0 +1,33 @@
+digraph G
+{
+  edge [fontname="FreeSans.ttf",fontsize=10,labelfontname="FreeSans.ttf",labelfontsize=10];
+  node [fontname="FreeSans.ttf",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="liquibase.exception.LiquibaseException",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node2 [label="liquibase.exception.ChangeLogParseException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_change_log_parse_exception.html"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 [label="liquibase.exception.DatabaseHistoryException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_database_history_exception.html"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node4 [label="liquibase.exception.DuplicateChangeSetException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_duplicate_change_set_exception.html"];
+  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node5 [label="liquibase.exception.DuplicateStatementIdentifierException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_duplicate_statement_identifier_exception.html"];
+  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node6 [label="liquibase.exception.JDBCException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_j_d_b_c_exception.html"];
+  Node6 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node7 [label="liquibase.exception.StatementNotSupportedOnDatabaseException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_statement_not_supported_on_database_exception.html"];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node8 [label="liquibase.exception.LockException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_lock_exception.html"];
+  Node1 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node9 [label="liquibase.exception.MigrationFailedException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_migration_failed_exception.html"];
+  Node9 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node10 [label="liquibase.exception.ValidationFailedException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_validation_failed_exception.html"];
+  Node1 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node11 [label="liquibase.exception.RollbackFailedException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_rollback_failed_exception.html"];
+  Node1 -> Node12 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node12 [label="liquibase.exception.RollbackImpossibleException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_rollback_impossible_exception.html",tooltip="Thrown if a change is encountered that cannot be rolled back."];
+  Node1 -> Node13 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node13 [label="liquibase.exception.SetupException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_setup_exception.html",tooltip="If there is an error with setting up a Change this Exception will be thrown."];
+  Node1 -> Node14 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node14 [label="liquibase.exception.UnsupportedChangeException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1exception_1_1_unsupported_change_exception.html"];
+}

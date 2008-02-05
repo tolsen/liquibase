@@ -1,0 +1,11 @@
+digraph G
+{
+  edge [fontname="FreeSans.ttf",fontsize=10,labelfontname="FreeSans.ttf",labelfontsize=10];
+  node [fontname="FreeSans.ttf",fontsize=10,shape=record];
+  rankdir=LR;
+  Node1 [label="liquibase.database.template.RowMapper",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node2 [label="liquibase.database.template.ColumnMapRowMapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1database_1_1template_1_1_column_map_row_mapper.html",tooltip="RowMapper implementation that creates a java.util.Map for each row, representing..."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 [label="liquibase.database.template.SingleColumnRowMapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1database_1_1template_1_1_single_column_row_mapper.html",tooltip="RowMapper implementation that converts a single column into a single result value..."];
+}

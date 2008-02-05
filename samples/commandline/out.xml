@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.5 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.5.xsd">
+    <changeSet author="diff-generated" id="1201883112790-1">
+        <createTable tableName="addcoltest">
+            <column name="existingcol" type="int4"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-2">
+        <createTable tableName="addnotnulltest">
+            <column name="id" type="int4"/>
+            <column name="testcol" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-3">
+        <createTable tableName="adduqtest">
+            <column name="id" type="int4">
+                <constraints nullable="false"/>
+            </column>
+            <column name="coltomakeuq" type="int4">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-4">
+        <createTable tableName="createindextest">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="testcol" type="varchar(50)"/>
+            <column name="testcol2" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-5">
+        <createTable tableName="createviewtesttable">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-6">
+        <createTable tableName="dropnotnulltest">
+            <column name="id" type="int4"/>
+            <column name="testcol" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-7">
+        <createTable tableName="droppktest">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="othercol" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-8">
+        <createTable tableName="dropviewtesttable">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-9">
+        <createTable tableName="renamecolumntest">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="testcol" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-10">
+        <createTable tableName="renameviewtesttable">
+            <column name="id" type="int4">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-11">
+        <createTable tableName="serialtest1">
+            <column autoIncrement="true" name="id" type="serial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-12">
+        <createTable tableName="updatetest">
+            <column name="id" type="int4"/>
+            <column name="testcol" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-13">
+        <createSequence sequenceName="altertest_seq"/>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-14">
+        <createSequence sequenceName="droptest_seq"/>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-15">
+        <createView viewName="dropviewtest">SELECT dropviewtesttable.id FROM dropviewtesttable;</createView>
+    </changeSet>
+    <changeSet author="diff-generated" id="1201883112790-16">
+        <createView viewName="renameviewtest">SELECT renameviewtesttable.id FROM renameviewtesttable;</createView>
+    </changeSet>
+</databaseChangeLog>
