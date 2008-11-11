@@ -1,7 +1,68 @@
 LiquiBase Core Changelog
 ==========================================
 
-Changes in version 1.5.1 (2008.01.29)
+Changes in version 1.8.1 (2008.10.1)
+----------------------
+- Bug fixes
+
+Changes in version 1.8.0 (2008.09.17)
+----------------------
+- Added SQLite support
+- Bug fixes
+- Added dropAllForeignKeyConstraints change
+- Added onFail and onError precondition failure controls
+- Auto-increment specifying on a non-auto-increment table does not fail but simply ignores flag
+- Can control onDelete and onUpdate behavior for FK constraints
+- Added ability to specify that an index should be unique
+- Additional validation step checks for required attributes at run time
+- Improved ordering of generated scripts with diff
+- Improved command line migrator return codes
+- Context checking is case insensitive
+- Can specify end delimiter in <sql> change
+- Added several new precondition checks
+- Custom preconditions can be passed parameters
+
+Changes in version 1.7.0 (2008.06.25)
+----------------------
+- Added loadData change
+- Added support for changelog paramters
+- Allow preconditions in <changeSet>
+- Can export data with generateChangeLog
+- Added markNextChangeSetRan command
+- Added validCheckSum tag to changeSet
+- Can use change tags in <rollback>
+- Can reference previous changeSets in <rollback>
+- Allow custom preconditions
+- RowMapper interface is now public
+- Misc bug fixes
+
+Changes in version 1.6.1 (2008.04.23)
+----------------------
+- Maven/Grails/IntlliJ Plugin relase of 1.6.x
+- Many misc bug fixes
+
+Changes in version 1.6.0 (2008.03.27)
+----------------------
+- Added Hibernate diff support
+- Fix to MD5Sum generation that requires updating all rows in databasechangelog table
+- Added tagDatabase tag
+- Added primaryKeyName attribute
+- Supports multiple rollback tags per changeSet
+- Column remarks stored in generated changelogs
+- executeCommand output logged to logging system
+- Many misc bug fixes
+
+Changes in version 1.5.3 (2008.02.28)
+----------------------
+- Recompiled to work with Java 1.5
+
+Changes in version 1.5.2 (2008.02.07)
+----------------------
+- Fixed bug with runOnChange and MD5sum check
+- Handles generating changelog for tables with composite primary keys
+- Other minor bug fixes
+
+Changes in version 1.5.1 (2008.02.01)
 ----------------------
 - Fixed failOnError logic
 - Improved serial column detection in Postgres

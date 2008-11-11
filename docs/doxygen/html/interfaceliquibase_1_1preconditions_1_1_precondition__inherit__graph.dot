@@ -1,21 +1,19 @@
 digraph G
 {
-  edge [fontname="FreeSans.ttf",fontsize=10,labelfontname="FreeSans.ttf",labelfontsize=10];
-  node [fontname="FreeSans.ttf",fontsize=10,shape=record];
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
   rankdir=LR;
   Node1 [label="liquibase.preconditions.Precondition",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
-  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node2 [label="liquibase.preconditions.DBMSPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_d_b_m_s_precondition.html",tooltip="Precondition for specifying the type of database (oracle, mysql, etc."];
-  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node3 [label="liquibase.preconditions.PreconditionLogic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_precondition_logic.html",tooltip="Marker interface for precondition logic tags (and,or, not)."];
-  Node3 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node4 [label="liquibase.preconditions.AndPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_and_precondition.html",tooltip="Container class for all preconditions on a change log."];
-  Node3 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node5 [label="liquibase.preconditions.NotPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_not_precondition.html",tooltip="Class for controling &quot;not&quot; logic in preconditions."];
-  Node3 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node3 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node6 [label="liquibase.preconditions.OrPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_or_precondition.html",tooltip="Class for controling &quot;or&quot; logic in preconditions."];
-  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
   Node7 [label="liquibase.preconditions.RunningAsPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_running_as_precondition.html",tooltip="Precondition that checks the name of the user executing the change log."];
-  Node1 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node8 [label="liquibase.preconditions.SqlPrecondition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1preconditions_1_1_sql_precondition.html"];
 }

@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.5"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.8"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.5 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.5.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.8 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.8.xsd">
+
+    <property name="table.name" value="paramter_table"/>
+    <property file="changelogs/common/dynamic.parameters.properties"/>
+    <property name="column1.name" value="updated-columnA"/>
+    <property name="column2.name" value="columnB"/>
 
     <changeSet id="datatypetest-1" author="nvoxland">
-        <createTable tableName="dataTypeTest">
-            <column name="id" type="int">
+        <validCheckSum>e5b7b29ce3a75640858cd022501852d2</validCheckSum>
+        <createTable tableName="dataTypeTest" schemaName="">
+            <column name="id" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="dateCol" type="date"/>
             <column name="timeCol" type="time"/>
             <column name="dateTimeCol" type="dateTime"/>
         </createTable>
+    </changeSet>
+
+    <changeSet id="tagTest" author="nvoxland">
+        <tagDatabase tag="testTag"/>
     </changeSet>
 
     <changeSet id="datatypetest-2" author="nvoxland">
@@ -34,6 +44,7 @@
             <column name="dateA" type="date"/>
             <column name="timeA" type="time"/>
             <column name="datetimeA" type="datetime"/>
+            <column name="datetimeB" type="datetime"/>
         </createTable>
 
         <addDefaultValue tableName="defaultValueTest" columnName="intA" defaultValueNumeric="1"/>
@@ -42,8 +53,26 @@
         <addDefaultValue tableName="defaultValueTest" columnName="dateA" defaultValueDate="2007-08-09"/>
         <addDefaultValue tableName="defaultValueTest" columnName="timeA" defaultValueDate="14:15:16"/>
         <addDefaultValue tableName="defaultValueTest" columnName="datetimeA" defaultValueDate="2007-08-09T10:11:12"/>
+        <addDefaultValue tableName="defaultValueTest" columnName="datetimeB" defaultValueDate="2007-08-09 10:11:12"/>
 
         <insert tableName="defaultValueTest">
+            <column name="id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="defaultValueTest-2" author="nvoxland">
+        <createTable tableName="defaultValueTest2">
+            <column name="id" type="int" />
+            <column name="intA" type="int" defaultValueNumeric="1"/>
+            <column name="textA" type="varchar(5)" defaultValue="a"/>
+            <column name="booleanA" type="boolean" defaultValueBoolean="true"/>
+            <column name="dateA" type="date" defaultValueDate="2007-08-09"/>
+            <column name="timeA" type="time" defaultValueDate="14:15:16"/>
+            <column name="datetimeA" type="datetime" defaultValueDate="2007-08-09T10:11:12"/>
+            <column name="datetimeB" type="datetime" defaultValueDate="2007-08-09 10:11:12"/>
+        </createTable>
+
+        <insert tableName="defaultValueTest2">
             <column name="id" valueNumeric="1"/>
         </insert>
     </changeSet>
@@ -77,14 +106,14 @@
 
     <changeSet id="commentTest" author="nvoxland">
         <comment>Creates a table and updates a value with actual SQL. Mainly for testing the comment tags</comment>
-        <createTable tableName="commentTest">
+        <createTable tableName="commenttest">
             <column name="id" type="int"/>
         </createTable>
         <sql>
-            <comment>Insert value into commentTest</comment>
-            insert into commentTest (id) values (1);
-            insert into commentTest (id) values (2);
-            insert into commentTest (id) values (3);
+            <comment>Insert value into commenttest</comment>
+            insert into commenttest (id) values (1);
+            insert into commenttest (id) values (2);
+            insert into commenttest (id) values (3);
         </sql>
     </changeSet>
 
@@ -305,4 +334,194 @@
     <changeSet id="failOnErrorTest" author="rs" failOnError="false">
         <dropTable tableName="DoesNotExist" />
     </changeSet>
+
+    <changeSet id="createTableNamedPK" author="nvoxland">
+        <createTable tableName="createtablenamedpk">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pktest1"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--changeSet id="addColumnNamedPK" author="nvoxland">
+        <createTable tableName="addColumnNamedPK">
+            <column name="id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addColumn tableName="addColumnNamedPK">
+            <column name="pk" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pktest2"/>
+            </column>
+        </addColumn>
+    </changeSet-->
+
+    <changeSet id="tableWithRemarks" author="nvoxland">
+        <createTable tableName="tableWithRemarks" remarks="some test remarks">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="sampleCSVData-table" author="nvoxland">
+        <createTable tableName="csvdata">
+            <column name="name" type="varchar(50)"/>
+            <column name="username" type="varchar(50)"/>
+            <column name="security_level" type="int"/>
+            <column name="last_login" type="datetime"/>
+            <column name="locked" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="sampleCSVData" author="nvoxland">
+        <loadData tableName="csvdata" file="changelogs/sample.data1.csv"/>
+    </changeSet>
+    <changeSet id="sampleCSVData2" author="nvoxland">
+        <loadData tableName="csvdata" file="changelogs/sample.data2.csv">
+            <column header="locked" type="BOOLEAN"/>
+            <column header="last_login" type="DATE"/>
+            <column header="security_level" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="sampleCSVData3" author="nvoxland">
+        <preConditions>
+            <sqlCheck expectedResult="4">select count(*) from csvdata</sqlCheck>
+        </preConditions>
+        <loadData tableName="csvdata" file="changelogs/sample.data3.csv">
+            <column index="0" name="name" type="STRING"/>
+            <column header="last seen" name="last_login" type="DATE"/>
+            <column header="locked" type="BOOLEAN"/>
+            <column header="security_level" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="createTableNamedPKRef" author="nvoxland">
+        <createTable tableName="createTableNamedPKRef">
+            <column name="id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ref" type="int">
+                <constraints foreignKeyName="fk_reftest" references="createtablenamedpk(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="changeLogParameters" author="nvoxland">
+        <createTable tableName="${table.name}">
+            <column name="id" type="int"/>
+            <column name="${column1.name}" type="varchar(${column1.length})"/>
+            <column name="${column2.name}" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="customPreCondition" author="nvoxland">
+        <preConditions>
+            <customPrecondition className="liquibase.preconditions.ExampleCustomPrecondition">
+                <param name="name" value="Sample Name"/>
+                <param name="count" value="3"/>
+            </customPrecondition>
+        </preConditions>
+    </changeSet>
+
+    <changeSet id="failContinuePrecondition" author="nvoxland">
+        <preConditions onFail="CONTINUE">
+            <runningAs username="invaliduser"/>
+        </preConditions>
+        <createTable tableName="fail_continue_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="failWarnPrecondition" author="nvoxland">
+        <preConditions onFail="WARN">
+            <runningAs username="invaliduser"/>
+        </preConditions>
+        <createTable tableName="fail_warn_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="failMarkRanPrecondition" author="nvoxland">
+        <preConditions onError="MARK_RAN">
+            <sqlCheck>select 1 from badtable</sqlCheck>
+        </preConditions>
+        <createTable tableName="fail_markran_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="errorContinuePrecondition" author="nvoxland">
+        <preConditions onError="CONTINUE">
+            <sqlCheck>select 1 from badtable</sqlCheck>
+        </preConditions>
+        <createTable tableName="error_continue_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="errorWarnPrecondition" author="nvoxland">
+        <preConditions onError="WARN">
+            <sqlCheck>select 1 from badtable</sqlCheck>
+        </preConditions>
+        <createTable tableName="error_warn_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="errorMarkRanPrecondition" author="nvoxland">
+        <preConditions onError="MARK_RAN">
+            <sqlCheck>select 1 from badtable</sqlCheck>
+        </preConditions>
+        <createTable tableName="error_markran_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="changeSetRanPrecondition" author="nvoxland">
+        <preConditions>
+            <changeSetExecuted id="changeLogParameters" author="nvoxland" changeLogFile="changelogs/common/common.tests.changelog.xml"/>
+        </preConditions>
+        <createTable tableName="changesetprecondition_ran">
+            <column name="id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="tableExistsPrecondition" author="nvoxland">
+        <preConditions>
+            <tableExists tableName="CSVDATA"/>
+        </preConditions>
+    </changeSet>
+
+    <changeSet id="columnExistsPrecondition" author="nvoxland">
+        <preConditions>
+            <columnExists tableName="CSVDATA" columnName="name"/>
+        </preConditions>
+    </changeSet>
+
+    <changeSet id="fkExistsPrecondition" author="nvoxland">
+        <preConditions>
+            <foreignKeyConstraintExists foreignKeyName="fk_reftest"/>
+        </preConditions>
+    </changeSet>
+
+    <changeSet id="indexPrecondition" author="nvoxland">
+        <preConditions>
+            <indexExists indexName="idx_compoundtest"/>
+        </preConditions>
+    </changeSet>
+
+    <!--<changeSet id="primaryKeyPrecondition" author="nvoxland">-->
+        <!--<preConditions>-->
+            <!--<primaryKeyExists primaryKeyName="pk_pktest1"/>-->
+        <!--</preConditions>-->
+    <!--</changeSet>-->
+
+
+    <!--<changeSet id="viewsetup" author="nvoxland">-->
+        <!--<sql>create view csvview as select * from csvdata</sql>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="viewPrecondition" author="nvoxland">-->
+        <!--<preConditions>-->
+            <!--<viewExists viewName="csvview"/>-->
+        <!--</preConditions>-->
+    <!--</changeSet>-->
 </databaseChangeLog>

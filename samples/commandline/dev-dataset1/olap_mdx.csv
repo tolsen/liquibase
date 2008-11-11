@@ -1,0 +1,35 @@
+"id","cube_id","name","query"
+"1","1","Basic Alert Counts","select
+  {[Alert Message], [Alert Duration]} on columns,
+  {([Time])} ON rows
+from Alerts"
+"4","1","Average Lenght of Stay (12 months)","select NON EMPTY Hierarchize(Union({[Type].[All Types]}, [Type].[All Types].Children)) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Union({[Location].[Locations]}, [Location].[Locations].Children), [Location].[Locations].[Harbor Falls].Children)) ON ROWS
+from [Alerts]
+"
+"5","1","Average Wait Time (last 12 months)","select NON EMPTY Hierarchize(Union(Union({([Type].[All Types], [Requestor].[All Requestors])}, Crossjoin([Type].[All Types].Children, {[Requestor].[All Requestors]})), Crossjoin({[Type].[All Types].[Staff Button Press Alert]}, [Requestor].[All Requestors].Children))) ON COLUMNS,
+  NON EMPTY Hierarchize(Union(Union(Union(Union(Union({([Location].[Locations], [Closer].[All Closers])}, Crossjoin([Location].[Locations].Children, {[Closer].[All Closers]})), Crossjoin([Location].[Locations].[Harbor Falls].Children, {[Closer].[All Closers]})), Crossjoin({[Location].[Locations].[Harbor Falls].[ED 102]}, [Closer].[All Closers].Children)), Crossjoin({[Location].[Locations].[Harbor Falls].[ED 103]}, [Closer].[All Closers].Children)), Crossjoin({[Location].[Locations].[Harbor Falls].[ED 104]}, [Closer].[All Closers].Children))) ON ROWS
+from [Alerts]
+"
+"6","1","Asset Utilization - Facility comparison","select NON EMPTY Hierarchize(Union({[Requestor].[All Requestors]}, [Requestor].[All Requestors].Children)) ON COLUMNS,
+  NON EMPTY Crossjoin(Hierarchize(Union(Union({[Location].[Locations]}, [Location].[Locations].Children), [Location].[Locations].[Harbor Falls].Children)), {[Measures].[Alert Duration]}) ON ROWS
+from [Alerts]
+"
+"7","1","Facility Comparison","select NON EMPTY Crossjoin(Hierarchize(Union(Union({[Location].[Locations]}, [Location].[Locations].Children), [Location].[Locations].[Harbor Falls].Children)), {[Measures].[Alert Duration]}) ON COLUMNS,
+  NON EMPTY Hierarchize(Union({[Requestor].[All Requestors]}, [Requestor].[All Requestors].Children)) ON ROWS
+from [Alerts]
+"
+"8","1","Alert Duration - Requestor","select Hierarchize(Union({[Type].[All Types]}, [Type].[All Types].Children)) ON COLUMNS,
+  Hierarchize(Union({[Requestor].[All Requestors]}, [Requestor].[All Requestors].Children)) ON ROWS
+from [Alerts]
+where [Measures].[Alert Duration]"
+"9","1","Alert Duration - Responder","select Hierarchize(Union({[Type].[All Types]}, [Type].[All Types].Children)) ON COLUMNS,
+  Hierarchize(Union({[Closer].[All Closers]}, [Closer].[All Closers].Children)) ON ROWS
+from [Alerts]
+where [Measures].[Alert Duration]"
+"10","2","Tag Status","select NON EMPTY Hierarchize(Union({[Status].[All]}, [Status].[All].Children)) ON COLUMNS,
+  NON EMPTY Hierarchize(Union({[Tag Type].[All]}, [Tag Type].[All].Children)) ON ROWS
+from [AssetStatus]"
+"11","3","Room Status","select NON EMPTY Hierarchize(Union({[Status].[All]}, [Status].[All].Children)) ON COLUMNS,
+  NON EMPTY Hierarchize(Union({[Location].[All]}, [Location].[All].Children)) ON ROWS
+from [RoomStatus]"

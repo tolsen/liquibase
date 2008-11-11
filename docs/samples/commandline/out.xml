@@ -1,105 +1,1950 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.5 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.5.xsd">
-    <changeSet author="diff-generated" id="1201883112790-1">
-        <createTable tableName="addcoltest">
-            <column name="existingcol" type="int4"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-2">
-        <createTable tableName="addnotnulltest">
-            <column name="id" type="int4"/>
-            <column name="testcol" type="varchar(50)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-3">
-        <createTable tableName="adduqtest">
-            <column name="id" type="int4">
-                <constraints nullable="false"/>
-            </column>
-            <column name="coltomakeuq" type="int4">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-4">
-        <createTable tableName="createindextest">
-            <column name="id" type="int4">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="historical" context="dataset2" id="1220037311099-1">
+        <createTable tableName="activity">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="testcol" type="varchar(50)"/>
-            <column name="testcol2" type="varchar(50)"/>
+            <column name="frequency" type="int"/>
+            <column name="unit" type="varchar(20)"/>
+            <column name="start_time" type="DATETIME"/>
+            <column name="end_date" type="DATE"/>
+            <column name="name" type="varchar(128)"/>
+            <column name="duration" type="int"/>
+            <column name="location_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-5">
-        <createTable tableName="createviewtesttable">
-            <column name="id" type="int4">
+    <changeSet author="historical" context="dataset2" id="1220037311099-2">
+        <createTable tableName="activity_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(50)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-6">
-        <createTable tableName="dropnotnulltest">
-            <column name="id" type="int4"/>
-            <column name="testcol" type="varchar(50)">
+            <column name="name" type="varchar(128)"/>
+            <column name="activity_time" type="DATETIME"/>
+            <column name="duration" type="int"/>
+            <column name="location_id" type="BIGINT"/>
+            <column name="schedule_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-7">
-        <createTable tableName="droppktest">
-            <column name="id" type="int4">
+    <changeSet author="historical" context="dataset2" id="1220037311099-3">
+        <createTable tableName="activity_schedule">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="othercol" type="varchar(50)"/>
+            <column name="name" type="varchar(128)"/>
+            <column name="activity_time" type="DATETIME"/>
+            <column name="duration" type="int"/>
+            <column name="location_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-8">
-        <createTable tableName="dropviewtesttable">
-            <column name="id" type="int4">
+    <changeSet author="historical" context="dataset2" id="1220037311099-4">
+        <createTable tableName="alert">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="name" type="varchar(512)"/>
+            <column name="message" type="varchar(512)"/>
+            <column name="alert_date" type="DATE"/>
+            <column name="created" type="DATETIME"/>
+            <column name="first" type="DATETIME"/>
+            <column name="second" type="DATETIME"/>
+            <column name="closed" type="DATETIME"/>
+            <column name="stage" type="int"/>
+            <column defaultValueNumeric="0" name="duration" type="BIGINT"/>
+            <column name="staff_id" type="BIGINT"/>
+            <column name="asset_id" type="BIGINT"/>
+            <column name="closer_name" type="varchar(512)"/>
+            <column name="alerting_tag_id" type="BIGINT"/>
+            <column name="alerter_name" type="varchar(512)"/>
+            <column name="description_id" type="BIGINT"/>
+            <column name="facility_id" type="BIGINT"/>
+            <column name="location_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-9">
-        <createTable tableName="renamecolumntest">
-            <column name="id" type="int4">
+    <changeSet author="historical" context="dataset2" id="1220037311099-5">
+        <createTable tableName="asset_position">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="testcol" type="varchar(50)"/>
+            <column name="x" type="BIGINT"/>
+            <column name="y" type="BIGINT"/>
+            <column name="location_id" type="BIGINT"/>
+            <column name="map_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-10">
-        <createTable tableName="renameviewtesttable">
-            <column name="id" type="int4">
+    <changeSet author="historical" context="dataset2" id="1220037311099-6">
+        <createTable tableName="audio">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="file_path" type="varchar(1024)"/>
+            <column name="name" type="varchar(32)"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-11">
-        <createTable tableName="serialtest1">
-            <column autoIncrement="true" name="id" type="serial">
+    <changeSet author="historical" context="dataset2" id="1220037311099-7">
+        <createTable tableName="authorization">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(255)">
                 <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-8">
+        <createTable tableName="binary_device">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="type_id" type="BIGINT"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="state" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="device" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="BIT"/>
+            <column name="facility_id" type="BIGINT"/>
+            <column name="history_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-9">
+        <createTable tableName="binary_device_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="device_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_stamp" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-10">
+        <createTable tableName="binary_device_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direction" type="varchar(32)"/>
+            <column name="deleted" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-11">
+        <createTable tableName="checkin_functions_filter">
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checkin_function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-12">
+        <createTable tableName="contact">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_type" type="varchar(64)"/>
+            <column name="company" type="varchar(128)"/>
+            <column name="home_phone" type="varchar(20)"/>
+            <column name="cell_phone" type="varchar(20)"/>
+            <column name="work_phone" type="varchar(20)"/>
+            <column name="fax" type="varchar(20)"/>
+            <column name="email" type="varchar(80)"/>
+            <column name="address1" type="varchar(80)"/>
+            <column name="address2" type="varchar(80)"/>
+            <column name="city" type="varchar(80)"/>
+            <column name="state" type="varchar(32)"/>
+            <column name="zip" type="varchar(10)"/>
+            <column name="country" type="varchar(80)"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="relationship" type="varchar(128)"/>
+            <column name="phone1" type="varchar(20)"/>
+            <column name="phone2" type="varchar(20)"/>
+            <column name="phone3" type="varchar(20)"/>
+            <column name="phone_type1" type="varchar(20)"/>
+            <column name="phone_type2" type="varchar(20)"/>
+            <column name="phone_type3" type="varchar(20)"/>
+            <column name="address" type="varchar(80)"/>
+            <column name="ext_id" type="varchar(80)"/>
+            <column defaultValueBoolean="false" name="md" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-13">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chart_number" type="varchar(64)"/>
+            <column name="ssn" type="varchar(10)"/>
+            <column name="dob" type="DATE"/>
+            <column name="photo_id" type="BIGINT"/>
+            <column name="food_allergy" type="varchar(2048)"/>
+            <column name="med_allergy" type="varchar(2048)"/>
+            <column name="other_allergy" type="varchar(2048)"/>
+            <column name="track_history" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-14">
+        <createTable tableName="customer_md_pairs">
+            <column defaultValueNumeric="0" name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="md_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-15">
+        <createTable tableName="drl_pkg">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="drl_pkg_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-16">
+        <createTable tableName="drl_rule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="drl_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="drl_pkg_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="drl_rule" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-17">
+        <createTable tableName="encounter">
+            <column defaultValueNumeric="0" name="taggable_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="start" type="DATETIME"/>
+            <column name="end" type="DATETIME"/>
+            <column name="open" type="BIT"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="encounter_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-18">
+        <createTable tableName="encounter_location_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="encounter_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-19">
+        <createTable tableName="encounter_status">
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-20">
+        <createTable tableName="encounter_status_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="encounter_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-21">
+        <createTable tableName="encounter_type">
+            <column name="taggable_type_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-22">
+        <createTable tableName="equipment">
+            <column name="taggable_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="short_name" type="varchar(128)"/>
+            <column name="expiration" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-23">
+        <createTable tableName="equipment_location_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="equipment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-24">
+        <createTable tableName="equipment_status">
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-25">
+        <createTable tableName="equipment_status_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="equipment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-26">
+        <createTable tableName="equipment_type">
+            <column name="taggable_type_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-27">
+        <createTable tableName="facility">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="sub_domain" type="varchar(128)"/>
+            <column name="description" type="varchar(512)"/>
+            <column name="locating" type="BIT"/>
+            <column name="organization_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lock_demographics" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-28">
+        <createTable tableName="facility_function">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="assignee_id" type="BIGINT"/>
+            <column name="description" type="varchar(512)"/>
+            <column name="enabled" type="BIT"/>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="audit_id" type="BIGINT"/>
+            <column name="ext_id" type="varchar(80)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-29">
+        <createTable tableName="function_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="time_in" type="DATETIME"/>
+            <column name="time_out" type="DATETIME"/>
+            <column name="staff_id" type="BIGINT"/>
+            <column name="function_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-30">
+        <createTable tableName="function_monitor_type">
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taggable_type_id" type="BIGINT"/>
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-31">
+        <createTable tableName="function_task_defs">
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_def_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-32">
+        <createTable tableName="functions">
+            <column name="task_def_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-33">
+        <createTable tableName="group_functions">
+            <column name="group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elt" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-34">
+        <createTable tableName="group_users">
+            <column name="group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elt" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-35">
+        <createTable tableName="inventory_item">
+            <column name="taggable_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="short_name" type="varchar(128)"/>
+            <column name="expiration" type="DATE"/>
+            <column name="photo_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-36">
+        <createTable tableName="inventory_location_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="inventory_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-37">
+        <createTable tableName="inventory_status">
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-38">
+        <createTable tableName="inventory_status_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="inventory_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-39">
+        <createTable tableName="inventory_type">
+            <column name="taggable_type_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="par" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-40">
+        <createTable tableName="location">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ext_id" type="varchar(32)"/>
+            <column name="name" type="varchar(32)"/>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT"/>
+            <column name="enabled" type="BIT"/>
+            <column name="history_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-41">
+        <createTable tableName="location_location_type">
+            <column defaultValueNumeric="0" name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-42">
+        <createTable tableName="location_map">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="location_id" type="BIGINT"/>
+            <column name="region_id" type="BIGINT"/>
+            <column name="x" type="BIGINT"/>
+            <column name="y" type="BIGINT"/>
+            <column name="region_map_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-43">
+        <createTable tableName="location_region">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="location_id" type="BIGINT"/>
+            <column name="region_id" type="BIGINT"/>
+            <column name="x" type="varchar(255)"/>
+            <column name="y" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-44">
+        <createTable tableName="location_status">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(32)"/>
+            <column name="color" type="varchar(32)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-45">
+        <createTable tableName="location_status_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="location_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="DATETIME"/>
+            <column name="end_time" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-46">
+        <createTable tableName="location_status_map">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="location_map_id" type="BIGINT"/>
+            <column name="location_status_id" type="BIGINT"/>
+            <column name="image_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-47">
+        <createTable tableName="location_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-48">
+        <createTable tableName="login">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="username" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="password" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="system_user" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="staff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-49">
+        <createTable tableName="low_batt">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="asset_id" type="BIGINT"/>
+            <column name="location_id" type="BIGINT"/>
+            <column defaultValueDate="CURRENT_TIMESTAMP" name="time_reported" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-50">
+        <createTable tableName="md">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="specialty" type="varchar(128)"/>
+            <column name="ext_id" type="varchar(80)"/>
+            <column name="clinic_name" type="varchar(40)"/>
+            <column name="clinic_phone" type="varchar(20)"/>
+            <column name="clinic_fax" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-51">
+        <createTable tableName="message">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="to_staff_id" type="BIGINT"/>
+            <column name="from_staff_id" type="BIGINT"/>
+            <column name="text" type="varchar(1028)"/>
+            <column name="audio_id" type="BIGINT"/>
+            <column name="is_displayed" type="BIT"/>
+            <column name="status" type="varchar(32)"/>
+            <column name="created_time" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-52">
+        <createTable tableName="message_text">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="text" type="varchar(1024)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="staff_id" type="BIGINT"/>
+            <column name="global" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-53">
+        <createTable tableName="milestone">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="milestone_application_id" type="BIGINT"/>
+            <column defaultValue="" name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="short_name" type="varchar(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="milestone_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="capacity" type="int"/>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon_url" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-54">
+        <createTable tableName="milestone_application">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-55">
+        <createTable tableName="milestone_encounter">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="encounter_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="milestone_encounter_result_id" type="BIGINT"/>
+            <column name="milestone_application_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scheduled_start" type="DATETIME"/>
+            <column name="scheduled_end" type="DATETIME"/>
+            <column name="priority" type="int"/>
+            <column name="held" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="assigned_md_name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-56">
+        <createTable tableName="milestone_encounter_result">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="milestone_application_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_result" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-57">
+        <createTable tableName="milestone_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="milestone_encounter_id" type="BIGINT"/>
+            <column name="milestone_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered_milestone" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="left_milestone" type="DATETIME"/>
+            <column name="waiting_for" type="BIT"/>
+            <column name="priority" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-58">
+        <createTable tableName="olap_mdx">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="cube_id" type="BIGINT"/>
+            <column name="name" type="varchar(128)"/>
+            <column name="query" type="varchar(4000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-59">
+        <createTable tableName="olap_time">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="real_date" type="DATE"/>
+            <column name="year" type="int"/>
+            <column name="quarter" type="varchar(2)"/>
+            <column name="month" type="int"/>
+            <column name="month_name" type="varchar(10)"/>
+            <column name="week_in_month" type="int"/>
+            <column name="day_in_month" type="int"/>
+            <column name="day_name" type="varchar(255)"/>
+            <column name="week_name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-60">
+        <createTable tableName="organization">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="description" type="varchar(512)"/>
+            <column name="domain" type="varchar(64)"/>
+            <column name="prod_name" type="varchar(128)"/>
+            <column name="server_url" type="varchar(128)"/>
+            <column name="logo" type="varchar(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-61">
+        <createTable tableName="photo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="file_path" type="varchar(1024)"/>
+            <column name="name" type="varchar(32)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-62">
+        <createTable tableName="region_map">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="image_id" type="BIGINT"/>
+            <column name="facility_id" type="BIGINT"/>
+            <column defaultValue="" name="name" type="varchar(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="bit"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-63">
+        <createTable tableName="report">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(256)"/>
+            <column name="class_name" type="varchar(256)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-64">
+        <createTable tableName="req_func_task_defs">
+            <column name="task_def_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-65">
+        <createTable tableName="result_action">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="definition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="rule_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="bit"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-66">
+        <createTable tableName="result_attribute">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="value" type="varchar(512)"/>
+            <column name="result_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-67">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-68">
+        <createTable tableName="role_authorizations">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="authorization_enum_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-69">
+        <createTable tableName="role_functions">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-70">
+        <createTable tableName="role_reports">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="report_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-71">
+        <createTable tableName="role_tabs">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tab_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-72">
+        <createTable tableName="rule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="definition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="bit"/>
+            <column name="name" type="varchar(128)"/>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="12" name="start_hr" type="int"/>
+            <column defaultValueNumeric="0" name="start_min" type="int"/>
+            <column name="start_am" type="varchar(2)"/>
+            <column defaultValueNumeric="12" name="end_hr" type="int"/>
+            <column defaultValueNumeric="0" name="end_min" type="int"/>
+            <column name="end_am" type="varchar(2)"/>
+            <column name="deleted" type="bit"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-73">
+        <createTable tableName="rule_attribute">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="value" type="varchar(512)"/>
+            <column name="rule_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-74">
+        <createTable tableName="sched_task">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="frequency" type="int"/>
+            <column name="unit" type="varchar(20)"/>
+            <column name="start_time" type="DATETIME"/>
+            <column name="end_date" type="DATE"/>
+            <column name="created_by_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="definition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-75">
+        <createTable tableName="sched_task_day">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="day" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-76">
+        <createTable tableName="sched_task_functions">
+            <column name="task_sched_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-77">
+        <createTable tableName="sched_task_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="sched_time" type="DATETIME"/>
+            <column name="delivered" type="bit"/>
+            <column name="schedule_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-78">
+        <createTable tableName="staff">
+            <column name="taggable_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="first_name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(128)"/>
+            <column name="email_address" type="varchar(128)"/>
+            <column name="copy_email" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-79">
+        <createTable tableName="staff_location_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="staff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-80">
+        <createTable tableName="staff_preference">
+            <column autoIncrement="true" name="preference_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="name" type="varchar(255)"/>
+            <column name="raw_value" type="varchar(128)"/>
+            <column name="preference_type" type="int"/>
+            <column name="preferences_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-12">
-        <createTable tableName="updatetest">
-            <column name="id" type="int4"/>
-            <column name="testcol" type="varchar(50)"/>
+    <changeSet author="historical" context="dataset2" id="1220037311099-81">
+        <createTable tableName="staff_preferences">
+            <column autoIncrement="true" name="preferences_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="staff_id" type="BIGINT"/>
+            <column name="preferences_type" type="int"/>
         </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-13">
-        <createSequence sequenceName="altertest_seq"/>
+    <changeSet author="historical" context="dataset2" id="1220037311099-82">
+        <createTable tableName="staff_role">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="staff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-14">
-        <createSequence sequenceName="droptest_seq"/>
+    <changeSet author="historical" context="dataset2" id="1220037311099-83">
+        <createTable tableName="staff_status">
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-15">
-        <createView viewName="dropviewtest">SELECT dropviewtesttable.id FROM dropviewtesttable;</createView>
+    <changeSet author="historical" context="dataset2" id="1220037311099-84">
+        <createTable tableName="staff_status_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="staff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entered" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exited" type="DATETIME"/>
+        </createTable>
     </changeSet>
-    <changeSet author="diff-generated" id="1201883112790-16">
-        <createView viewName="renameviewtest">SELECT renameviewtesttable.id FROM renameviewtesttable;</createView>
+    <changeSet author="historical" context="dataset2" id="1220037311099-85">
+        <createTable tableName="staff_type">
+            <column name="taggable_type_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-86">
+        <createTable tableName="tag">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="ext_id" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ghost_out" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="low_battery" type="DATETIME"/>
+            <column name="fixed_location" type="BIT"/>
+            <column name="current_location_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-87">
+        <createTable tableName="tag_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taggable_id" type="BIGINT"/>
+            <column name="attached" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="detached" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-88">
+        <createTable tableName="taggable">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="notes" type="varchar(1024)"/>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT"/>
+            <column name="facility_id" type="BIGINT"/>
+            <column name="current_location_id" type="BIGINT"/>
+            <column name="photo_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="tag_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-89">
+        <createTable tableName="taggable_status">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="varchar(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-90">
+        <createTable tableName="taggable_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon" type="varchar(128)"/>
+            <column name="parent_id" type="BIGINT"/>
+            <column name="facility_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-91">
+        <createTable tableName="task">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="work_time" type="BIGINT"/>
+            <column name="sched_audio_id" type="BIGINT"/>
+            <column name="cmpl_audio_id" type="BIGINT"/>
+            <column name="assigned_to_id" type="BIGINT"/>
+            <column name="created_by_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="completed_by_id" type="BIGINT"/>
+            <column name="resident_id" type="BIGINT"/>
+            <column name="definition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="status" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="BIGINT"/>
+            <column name="scheduled_time" type="DATETIME"/>
+            <column name="sched_notes" type="varchar(2048)"/>
+            <column name="closed_time" type="DATETIME"/>
+            <column name="notes" type="varchar(2048)"/>
+            <column name="closed_by_id" type="BIGINT"/>
+            <column name="encounter_id" type="BIGINT"/>
+            <column name="ext_id" type="varchar(80)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-92">
+        <createTable tableName="task_action_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="value" type="varchar(256)"/>
+            <column name="valueType" type="varchar(32)"/>
+            <column name="schd_task_id" type="BIGINT"/>
+            <column name="pre_task_id" type="BIGINT"/>
+            <column name="cmpl_task_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-93">
+        <createTable tableName="task_definition">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="description" type="varchar(4096)"/>
+            <column name="grace" type="int"/>
+            <column name="org_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="15" name="reminder" type="int"/>
+            <column name="deleted" type="bit"/>
+            <column name="ext_id" type="varchar(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-94">
+        <createTable tableName="task_option">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(2048)"/>
+            <column name="value" type="varchar(256)"/>
+            <column name="valueType" type="varchar(32)"/>
+            <column name="task_def_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-95">
+        <createTable tableName="task_sched">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="frequency" type="varchar(255)"/>
+            <column name="hour" type="int"/>
+            <column name="minute" type="int"/>
+            <column name="week_day" type="int"/>
+            <column name="mo_day" type="int"/>
+            <column name="year_day" type="int"/>
+            <column name="year_mo" type="int"/>
+            <column name="end_date" type="DATE"/>
+            <column name="scheduled" type="bit"/>
+            <column name="assigned_to_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resident_id" type="BIGINT"/>
+            <column name="definition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-96">
+        <createTable tableName="user_pref_functions">
+            <column defaultValueNumeric="0" name="staff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-97">
+        <createTable tableName="web_tab">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)"/>
+            <column name="content_page" type="varchar(256)"/>
+            <column name="tab_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="top_level" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_tab" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="BIGINT"/>
+            <column name="security_id" type="BIGINT"/>
+            <column name="logical_key" type="varchar(10)"/>
+            <column name="milestone_application_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-98">
+        <createTable tableName="workflow_group">
+            <column defaultValueNumeric="0" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(256)"/>
+            <column name="enabled" type="BIT"/>
+            <column name="sign_in" type="BIT"/>
+            <column name="group_messages" type="BIT"/>
+            <column name="user_messages" type="BIT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-99">
+        <addPrimaryKey columnNames="function_id, checkin_function_id" tableName="checkin_functions_filter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-100">
+        <addPrimaryKey columnNames="md_id, customer_id" tableName="customer_md_pairs"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-101">
+        <addPrimaryKey columnNames="function_id, task_def_id" tableName="function_task_defs"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-102">
+        <addPrimaryKey columnNames="group_id, elt" tableName="group_functions"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-103">
+        <addPrimaryKey columnNames="group_id, elt" tableName="group_users"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-104">
+        <addPrimaryKey columnNames="location_id, type_id" tableName="location_location_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-105">
+        <addPrimaryKey columnNames="task_def_id, function_id" tableName="req_func_task_defs"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-106">
+        <addPrimaryKey columnNames="role_id, authorization_enum_id" tableName="role_authorizations"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-107">
+        <addPrimaryKey columnNames="role_id, function_id" tableName="role_functions"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-108">
+        <addPrimaryKey columnNames="role_id, report_id" tableName="role_reports"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-109">
+        <addPrimaryKey columnNames="role_id, tab_id" tableName="role_tabs"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-110">
+        <addPrimaryKey columnNames="task_sched_id, function_id" tableName="sched_task_functions"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-111">
+        <addPrimaryKey columnNames="staff_id, role_id" tableName="staff_role"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-112">
+        <addPrimaryKey columnNames="staff_id, function_id" tableName="user_pref_functions"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-113">
+        <createIndex indexName="FK589895C314A41F9" tableName="alert" unique="false">
+            <column name="facility_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-114">
+        <createIndex indexName="FK589895C77886575" tableName="alert" unique="false">
+            <column name="description_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-115">
+        <createIndex indexName="FK589895C7AAE40FB" tableName="alert" unique="false">
+            <column name="asset_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-116">
+        <createIndex indexName="FKD02C2D984B15298C" tableName="asset_position" unique="false">
+            <column name="map_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-117">
+        <createIndex indexName="FKD02C2D986D21BAD5" tableName="asset_position" unique="false">
+            <column name="map_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-118">
+        <createIndex indexName="name" tableName="audio" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-119">
+        <createIndex indexName="name" tableName="authorization" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-120">
+        <createIndex indexName="chart_number" tableName="customer" unique="true">
+            <column name="chart_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-121">
+        <createIndex indexName="drl_pkg_name" tableName="drl_pkg" unique="true">
+            <column name="drl_pkg_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-122">
+        <createIndex indexName="sub_domain" tableName="facility" unique="true">
+            <column name="sub_domain"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-123">
+        <createIndex indexName="ext_id" tableName="facility_function" unique="true">
+            <column name="ext_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-124">
+        <createIndex indexName="FKA879808357DA34C2" tableName="function_monitor_type" unique="false">
+            <column name="function_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-125">
+        <createIndex indexName="FKF79F079B1EBDC4F" tableName="functions" unique="false">
+            <column name="task_def_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-126">
+        <createIndex indexName="FKF79F079B57DA34C2" tableName="functions" unique="false">
+            <column name="function_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-127">
+        <createIndex indexName="FK6DFA25DB305C7852" tableName="group_functions" unique="false">
+            <column name="group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-128">
+        <createIndex indexName="FK6DFA25DBCBE06E8D" tableName="group_functions" unique="false">
+            <column name="elt"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-129">
+        <createIndex indexName="FK41CACC4811222A80" tableName="group_users" unique="false">
+            <column name="elt"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-130">
+        <createIndex indexName="FK41CACC48305C7852" tableName="group_users" unique="false">
+            <column name="group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-131">
+        <createIndex indexName="name" tableName="location_type" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-132">
+        <createIndex indexName="domain" tableName="organization" unique="true">
+            <column name="domain"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-133">
+        <createIndex indexName="name" tableName="organization" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-134">
+        <createIndex indexName="name" tableName="photo" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-135">
+        <createIndex indexName="name" tableName="region_map" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-136">
+        <createIndex indexName="FK734299496330CC02" tableName="staff_role" unique="false">
+            <column name="role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-137">
+        <createIndex indexName="idx_tag_extid" tableName="tag" unique="false">
+            <column name="ext_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-138">
+        <createIndex indexName="FK36358553515852" tableName="task" unique="false">
+            <column name="resident_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-139">
+        <createIndex indexName="FK363585599E48E2" tableName="task" unique="false">
+            <column name="completed_by_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-140">
+        <createIndex indexName="FK4E3E518573DEDFAF" tableName="task_action_history" unique="false">
+            <column name="schd_task_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-141">
+        <createIndex indexName="FK4E3E518574A89DBD" tableName="task_action_history" unique="false">
+            <column name="pre_task_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-142">
+        <createIndex indexName="FK4E3E5185E228649" tableName="task_action_history" unique="false">
+            <column name="cmpl_task_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-143">
+        <createIndex indexName="FKACF9204D6B1CC391" tableName="task_definition" unique="false">
+            <column name="org_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-144">
+        <createIndex indexName="FK4E36C37D53515852" tableName="task_sched" unique="false">
+            <column name="resident_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-145">
+        <createIndex indexName="FK4E36C37D59CBD18E" tableName="task_sched" unique="false">
+            <column name="assigned_to_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-146">
+        <createIndex indexName="FK4E36C37D5EDD8847" tableName="task_sched" unique="false">
+            <column name="definition_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-147">
+        <createIndex indexName="FK4E36C37D857827BF" tableName="task_sched" unique="false">
+            <column name="created_by_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-148">
+        <createIndex indexName="FKED43A77357DA34C2" tableName="user_pref_functions" unique="false">
+            <column name="function_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-149">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="activity" constraintName="fk_activity_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-150">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="activity_item" constraintName="fk_activityitem_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-151">
+        <addForeignKeyConstraint baseColumnNames="schedule_id" baseTableName="activity_item" constraintName="FKC238D243970A96A8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="activity"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-152">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="activity_schedule" constraintName="fk_activityschedule_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-153">
+        <addForeignKeyConstraint baseColumnNames="alerting_tag_id" baseTableName="alert" constraintName="fk_alert_alertingtag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-154">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="alert" constraintName="fk_alert_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-155">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="alert" constraintName="fk_alert_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-156">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="asset_position" constraintName="fk_asset_position_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-157">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="binary_device" constraintName="fk_binary_device_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="binary_device_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-158">
+        <addForeignKeyConstraint baseColumnNames="device_id" baseTableName="binary_device_history" constraintName="fk_binary_device" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="binary_device"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-159">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="contact" constraintName="fk_contact_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="customer"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-160">
+        <addForeignKeyConstraint baseColumnNames="photo_id" baseTableName="customer" constraintName="FK192D745C761BB" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="photo"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-161">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="customer_md_pairs" constraintName="fk_customerpairs_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="customer"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-162">
+        <addForeignKeyConstraint baseColumnNames="md_id" baseTableName="customer_md_pairs" constraintName="FKFF97C99D17434AC" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="md"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-163">
+        <addForeignKeyConstraint baseColumnNames="drl_pkg_id" baseTableName="drl_rule" constraintName="fk_drl_pkg" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="drl_pkg"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-164">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="encounter" constraintName="fk_encounter_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="customer"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-165">
+        <addForeignKeyConstraint baseColumnNames="taggable_id" baseTableName="encounter" constraintName="fk_encounter_taggable" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-166">
+        <addForeignKeyConstraint baseColumnNames="encounter_id" baseTableName="encounter_location_history" constraintName="fk_encounterlochistory_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="encounter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-167">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="encounter_location_history" constraintName="fk_encounterloc_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-168">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="encounter_location_history" constraintName="fk_encounterloc_tag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-169">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="encounter_status" constraintName="fk_encounterstatus_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-170">
+        <addForeignKeyConstraint baseColumnNames="encounter_id" baseTableName="encounter_status_history" constraintName="fk_encstatushist_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="encounter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-171">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="encounter_status_history" constraintName="fk_encstatushist_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="status_id" referencedTableName="encounter_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-172">
+        <addForeignKeyConstraint baseColumnNames="taggable_id" baseTableName="equipment" constraintName="fk_equipment_taggable" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-173">
+        <addForeignKeyConstraint baseColumnNames="equipment_id" baseTableName="equipment_location_history" constraintName="fk_equipmentloc_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="equipment"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-174">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="equipment_location_history" constraintName="fk_equipmentloc_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-175">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="equipment_location_history" constraintName="fk_equipmentloc_tag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-176">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="equipment_status" constraintName="fk_equipmentstatus_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-177">
+        <addForeignKeyConstraint baseColumnNames="equipment_id" baseTableName="equipment_status_history" constraintName="fk_equipstatushist_equipment" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="equipment"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-178">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="equipment_status_history" constraintName="fk_equipstatushist_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="status_id" referencedTableName="equipment_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-179">
+        <addForeignKeyConstraint baseColumnNames="organization_id" baseTableName="facility" constraintName="FK1DDE6EA331345079" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="organization"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-180">
+        <addForeignKeyConstraint baseColumnNames="assignee_id" baseTableName="facility_function" constraintName="fk_facilityfunction_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-181">
+        <addForeignKeyConstraint baseColumnNames="audit_id" baseTableName="facility_function" constraintName="FKCF4FDF4B660219C" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="function_history"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-182">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="facility_function" constraintName="FKCF4FDF4314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-183">
+        <addForeignKeyConstraint baseColumnNames="function_id" baseTableName="function_history" constraintName="FK2EB9A72D120839D9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-184">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="function_history" constraintName="fk_functionhistory_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-185">
+        <addForeignKeyConstraint baseColumnNames="function_id" baseTableName="function_task_defs" constraintName="fk_functiontaskdef_function" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-186">
+        <addForeignKeyConstraint baseColumnNames="task_def_id" baseTableName="function_task_defs" constraintName="FKAD4ABE121717426" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="task_definition"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-187">
+        <addForeignKeyConstraint baseColumnNames="taggable_id" baseTableName="inventory_item" constraintName="fk_inventory_taggable" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-188">
+        <addForeignKeyConstraint baseColumnNames="inventory_id" baseTableName="inventory_location_history" constraintName="fk_inventoryloc_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="inventory_item"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-189">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="inventory_location_history" constraintName="fk_inventoryloc_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-190">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="inventory_location_history" constraintName="fk_inventoryloc_tag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-191">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="inventory_status" constraintName="fk_inventorystatus_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-192">
+        <addForeignKeyConstraint baseColumnNames="inventory_id" baseTableName="inventory_status_history" constraintName="fk_inventstatushist_inventory" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="inventory_item"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-193">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="inventory_status_history" constraintName="fk_inventstatushist_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="status_id" referencedTableName="inventory_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-194">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="location" constraintName="FK3580DB314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-195">
+        <addForeignKeyConstraint baseColumnNames="history_id" baseTableName="location" constraintName="FK3580DBADECD38E" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_status_history"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-196">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="location" constraintName="FK3580DBF6145C94" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-197">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="location_location_type" constraintName="fk_roomroomtypes_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-198">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="location_location_type" constraintName="FK30F339F9F68FF614" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-199">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="location_map" constraintName="fk_roommap_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-200">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="location_region" constraintName="fk_roomregion_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-201">
+        <addForeignKeyConstraint baseColumnNames="region_id" baseTableName="location_region" constraintName="FK27F406D8B204B23D" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="region_map"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-202">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="location_status_history" constraintName="fk_roomstatushistory_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-203">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="location_status_history" constraintName="FK1E5F052BF6145C94" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-204">
+        <addForeignKeyConstraint baseColumnNames="location_map_id" baseTableName="location_status_map" constraintName="fk_locationstatusmap_locationmap" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_map"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-205">
+        <addForeignKeyConstraint baseColumnNames="location_status_id" baseTableName="location_status_map" constraintName="fk_locationstatusmap_locationstatus" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-206">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="login" constraintName="fk_login_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-207">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="low_batt" constraintName="fk_lowbatt_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-208">
+        <addForeignKeyConstraint baseColumnNames="audio_id" baseTableName="message" constraintName="FK38EB0007CB18CF3B" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="audio"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-209">
+        <addForeignKeyConstraint baseColumnNames="from_staff_id" baseTableName="message" constraintName="fk_alert_fromstaff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-210">
+        <addForeignKeyConstraint baseColumnNames="to_staff_id" baseTableName="message" constraintName="fk_alert_tostaff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-211">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="message_text" constraintName="fk_messagetext_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-212">
+        <addForeignKeyConstraint baseColumnNames="milestone_application_id" baseTableName="milestone" constraintName="fk_milestone_app" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone_application"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-213">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="milestone_application" constraintName="FK7709D501314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-214">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="milestone_application" constraintName="fk_milestoneapp_facility" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-215">
+        <addForeignKeyConstraint baseColumnNames="encounter_id" baseTableName="milestone_encounter" constraintName="fk_milestoneenc_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="encounter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-216">
+        <addForeignKeyConstraint baseColumnNames="milestone_encounter_result_id" baseTableName="milestone_encounter" constraintName="FK672071241969E93C" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone_encounter_result"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-217">
+        <addForeignKeyConstraint baseColumnNames="milestone_encounter_result_id" baseTableName="milestone_encounter" constraintName="fk_milestoneencounter_milestoneencounterresult" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone_encounter_result"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-218">
+        <addForeignKeyConstraint baseColumnNames="milestone_encounter_id" baseTableName="milestone_history" constraintName="fk_milestonehistory_milestoneencounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone_encounter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-219">
+        <addForeignKeyConstraint baseColumnNames="milestone_id" baseTableName="milestone_history" constraintName="FK4D1B34C5B02CD080" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-220">
+        <addForeignKeyConstraint baseColumnNames="milestone_id" baseTableName="milestone_history" constraintName="fk_milestonehistory_milestone" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="milestone"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-221">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="region_map" constraintName="FK89606191314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-222">
+        <addForeignKeyConstraint baseColumnNames="image_id" baseTableName="region_map" constraintName="FK896061915E7EB9F2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="photo"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-223">
+        <addForeignKeyConstraint baseColumnNames="function_id" baseTableName="req_func_task_defs" constraintName="FKDAD3498E120839D9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-224">
+        <addForeignKeyConstraint baseColumnNames="task_def_id" baseTableName="req_func_task_defs" constraintName="FKDAD3498E21717426" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="task_definition"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-225">
+        <addForeignKeyConstraint baseColumnNames="rule_id" baseTableName="result_action" constraintName="FKB342C898200E5CE8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rule"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-226">
+        <addForeignKeyConstraint baseColumnNames="result_id" baseTableName="result_attribute" constraintName="FKBDA4ACFAF068A1B4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="result_action"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-227">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="role" constraintName="FK358076314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-228">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_authorizations" constraintName="FK2F956203CA62F499" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-229">
+        <addForeignKeyConstraint baseColumnNames="function_id" baseTableName="role_functions" constraintName="FK9B9FE712120839D9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-230">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_functions" constraintName="FK9B9FE712CA62F499" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-231">
+        <addForeignKeyConstraint baseColumnNames="report_id" baseTableName="role_reports" constraintName="FK580EA2F696582828" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="report"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-232">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_reports" constraintName="FK580EA2F6CA62F499" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-233">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_tabs" constraintName="FK140745A7CA62F499" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-234">
+        <addForeignKeyConstraint baseColumnNames="tab_id" baseTableName="role_tabs" constraintName="FK140745A7C6449609" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="web_tab"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-235">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="rule" constraintName="FK3596FC314A41F9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-236">
+        <addForeignKeyConstraint baseColumnNames="rule_id" baseTableName="rule_attribute" constraintName="FK3BDAB119200E5CE8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rule"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-237">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="sched_task" constraintName="fk_schedtask_createdby" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-238">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="sched_task" constraintName="fk_schedtask_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="customer"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-239">
+        <addForeignKeyConstraint baseColumnNames="definition_id" baseTableName="sched_task" constraintName="FKD5D9E60D7E63201E" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="task_definition"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-240">
+        <addForeignKeyConstraint baseColumnNames="function_id" baseTableName="sched_task_functions" constraintName="FKC1AF7BE9120839D9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-241">
+        <addForeignKeyConstraint baseColumnNames="task_sched_id" baseTableName="sched_task_functions" constraintName="FKC1AF7BE9E9C747F8" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sched_task"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-242">
+        <addForeignKeyConstraint baseColumnNames="schedule_id" baseTableName="sched_task_item" constraintName="FK80010E051D5CEA9E" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sched_task"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-243">
+        <addForeignKeyConstraint baseColumnNames="taggable_id" baseTableName="staff" constraintName="fk_staff_taggable" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-244">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="staff_location_history" constraintName="fk_staffloc_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-245">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="staff_location_history" constraintName="fk_staffloc_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-246">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="staff_location_history" constraintName="fk_staffloc_tag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-247">
+        <addForeignKeyConstraint baseColumnNames="preferences_id" baseTableName="staff_preference" constraintName="FKF89169CFA57FD20D" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="preferences_id" referencedTableName="staff_preferences"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-248">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="staff_preferences" constraintName="fk_staffpreferences_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-249">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="staff_role" constraintName="fk_staffrole_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-250">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="staff_status" constraintName="fk_staffstatus_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-251">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="staff_status_history" constraintName="fk_staffstatushist_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-252">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="staff_status_history" constraintName="fk_staffstatushist_status" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="status_id" referencedTableName="staff_status"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-253">
+        <addForeignKeyConstraint baseColumnNames="taggable_type_id" baseTableName="staff_type" constraintName="fk_stafftype_taggabletype" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-254">
+        <addForeignKeyConstraint baseColumnNames="current_location_id" baseTableName="tag" constraintName="fk_tag_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-255">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="tag_history" constraintName="fk_taghistory_tag" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-256">
+        <addForeignKeyConstraint baseColumnNames="taggable_id" baseTableName="tag_history" constraintName="fk_taghistory_taggable" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-257">
+        <addForeignKeyConstraint baseColumnNames="current_location_id" baseTableName="taggable" constraintName="fk_equipment_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-258">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="taggable" constraintName="fk_taggable_facility" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-259">
+        <addForeignKeyConstraint baseColumnNames="photo_id" baseTableName="taggable" constraintName="fk_taggable_photo" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="photo"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-260">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="taggable" constraintName="fk_taggable_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-261">
+        <addForeignKeyConstraint baseColumnNames="facility_id" baseTableName="taggable_type" constraintName="fk_stafftype_facility" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-262">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="taggable_type" constraintName="fk_taggabletype_parent" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="taggable_type"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-263">
+        <addForeignKeyConstraint baseColumnNames="assigned_to_id" baseTableName="task" constraintName="FK36358513F9D6A5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="facility_function"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-264">
+        <addForeignKeyConstraint baseColumnNames="closed_by_id" baseTableName="task" constraintName="fk_task_closedby" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-265">
+        <addForeignKeyConstraint baseColumnNames="cmpl_audio_id" baseTableName="task" constraintName="FK36358586D6DB74" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="audio"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-266">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="task" constraintName="fk_task_createdby" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-267">
+        <addForeignKeyConstraint baseColumnNames="definition_id" baseTableName="task" constraintName="FK3635857E63201E" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="task_definition"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-268">
+        <addForeignKeyConstraint baseColumnNames="encounter_id" baseTableName="task" constraintName="fk_task_encounter" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="encounter"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-269">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="task" constraintName="fk_task_location" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="location"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-270">
+        <addForeignKeyConstraint baseColumnNames="sched_audio_id" baseTableName="task" constraintName="FK363585CEE0FBC3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="audio"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-271">
+        <addForeignKeyConstraint baseColumnNames="task_def_id" baseTableName="task_option" constraintName="FK59EFF63021717426" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="task_definition"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-272">
+        <addForeignKeyConstraint baseColumnNames="staff_id" baseTableName="user_pref_functions" constraintName="fk_userpreffunctions_staff" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="taggable_id" referencedTableName="staff"/>
+    </changeSet>
+    <changeSet author="historical" context="dataset2" id="1220037311099-273">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="web_tab" constraintName="FK48F0F02A763438D4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="web_tab"/>
     </changeSet>
 </databaseChangeLog>

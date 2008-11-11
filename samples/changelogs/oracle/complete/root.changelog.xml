@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.5"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.8"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.5 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.5.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.8 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.8.xsd">
     <preConditions>
             <dbms type="oracle"/>
             <runningAs username="liquibase"/>
@@ -336,5 +336,39 @@ BEGIN
 END testSP;
         </sql>
     </changeSet>
+    <!--<changeSet id="t1.1-call" author="nvoxland">-->
+        <!--<sql>execute testSP</sql>-->
+    <!--</changeSet>-->
 
+    <changeSet id="62" author="nvoxland">
+        <createTable tableName="sysdateTest">
+            <column name="id" type="int"/>
+            <column name="date1" type="date" defaultValueDate="SYSDATE"/>
+            <column name="date2" type="date"/>
+        </createTable>
+
+        <addDefaultValue tableName="sysdateTest" columnName="date2" defaultValueDate="SYSDATE"/>
+    </changeSet>
+
+    <changeSet id="63" author="nvoxland">
+        <createTable tableName="varchar2Test">
+            <column name="id" type="int"/>
+            <column name="testcol" type="varchar2(50 char)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="64" author="nvoxland">
+        <sqlFile path="changelogs/oracle/complete/sampleproc.sql" splitStatements="false" endDelimiter=""/>
+    </changeSet>
+    <!--<changeSet id="64-test" author="nvoxland">-->
+        <!--<sql>call testHello</sql>-->
+    <!--</changeSet>-->
+
+    <changeSet id="65" author="nvoxland">
+        <sql>create table binarydoubletest (
+            id int not null primary key,
+            bdtestcol binary_double,
+            bftestcol binary_float)
+        </sql>
+    </changeSet>
 </databaseChangeLog>

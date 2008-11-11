@@ -1,0 +1,2 @@
+"id","work_time","sched_audio_id","cmpl_audio_id","assigned_to_id","created_by_id","completed_by_id","resident_id","definition_id","status","room_id","scheduled_time","sched_notes","closed_time","notes","closed_by_id","encounter_id","ext_id"
+"688","29454","NULL","NULL","11","7","NULL","NULL","12","Completed","NULL","2008-01-30T22:50:46.0","NULL","2008-01-30T22:51:15.0","NULL","7","NULL","NULL"

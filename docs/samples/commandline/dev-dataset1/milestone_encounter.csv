@@ -1,0 +1,6 @@
+"id","encounter_id","milestone_encounter_result_id","milestone_application_id","scheduled_start","scheduled_end","priority","held","assigned_md_name"
+"1","1","NULL","1","NULL","NULL","NULL","false","Sara Farrew"
+"2","3","1","1","NULL","NULL","NULL","true","Cory Brinden"
+"3","4","1","1","NULL","NULL","NULL","false","Cory Brinden"
+"4","2","NULL","1","NULL","NULL","NULL","false","NULL"
+"5","14","NULL","1","NULL","NULL","NULL","false","NULL"

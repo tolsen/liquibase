@@ -1,0 +1,5 @@
+"id","name","facility_id","enabled","asset_type_display_id"
+"1","Operating Room","1","true","2"
+"2","Disabled Operating Room Application","1","false","2"
+"5","Test App #2a","1","false","2"
+"13","Urgent Care","1","true","2"

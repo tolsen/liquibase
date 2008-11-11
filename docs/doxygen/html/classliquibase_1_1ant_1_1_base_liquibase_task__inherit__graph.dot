@@ -1,27 +1,13 @@
 digraph G
 {
-  edge [fontname="FreeSans.ttf",fontsize=10,labelfontname="FreeSans.ttf",labelfontsize=10];
-  node [fontname="FreeSans.ttf",fontsize=10,shape=record];
+  edge [fontname="FreeSans",fontsize=10,labelfontname="FreeSans",labelfontsize=10];
+  node [fontname="FreeSans",fontsize=10,shape=record];
   rankdir=LR;
   Node1 [label="liquibase.ant.BaseLiquibaseTask",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
-  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node2 [label="liquibase.ant.ChangeLogSyncTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_change_log_sync_task.html"];
-  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node3 [label="liquibase.ant.DatabaseRollbackFutureTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_rollback_future_task.html",tooltip="Ant task for rolling back a database."];
-  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node4 [label="liquibase.ant.DatabaseRollbackTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_rollback_task.html",tooltip="Ant task for rolling back a database."];
-  Node1 -> Node5 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node5 [label="liquibase.ant.DatabaseUpdateTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_update_task.html",tooltip="Ant task for migrating a database forward."];
-  Node1 -> Node6 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node6 [label="liquibase.ant.DBDocTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_d_b_doc_task.html"];
-  Node1 -> Node7 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node7 [label="liquibase.ant.DiffDatabaseTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_diff_database_task.html"];
-  Node7 -> Node8 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node8 [label="liquibase.ant.DiffDatabaseToChangeLogTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_diff_database_to_change_log_task.html"];
-  Node1 -> Node9 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node9 [label="liquibase.ant.DropAllTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_drop_all_task.html"];
-  Node1 -> Node10 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node10 [label="liquibase.ant.GenerateChangeLogTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_generate_change_log_task.html"];
-  Node1 -> Node11 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans.ttf"];
-  Node11 [label="liquibase.ant.TagDatabaseTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_tag_database_task.html"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
+  Node2 [label="liquibase.ant.DatabaseRollbackFutureTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_rollback_future_task.html",tooltip="Ant task for rolling back a database."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
+  Node3 [label="liquibase.ant.DatabaseRollbackTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_rollback_task.html",tooltip="Ant task for rolling back a database."];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize=10,style="solid",fontname="FreeSans"];
+  Node4 [label="liquibase.ant.DatabaseUpdateTask",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classliquibase_1_1ant_1_1_database_update_task.html",tooltip="Ant task for migrating a database forward."];
 }

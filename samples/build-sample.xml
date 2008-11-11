@@ -14,10 +14,11 @@
                 <include name="**/*.jar"/>
             </fileset>
             <pathelement location="../../build"/>
+            <pathelement location="../../build-test"/>
             <pathelement path="${user.home}/.IntelliJIdea50/config/plugins/clover-idea5.jar"/>
-            <fileset dir="../../release">
-                <include name="**/*.jar"/>
-            </fileset>
+            <!--<fileset dir="../../release">-->
+                <!--<include name="**/*.jar"/>-->
+            <!--</fileset>-->
         </path>
 
         <property name="db.changelog.file" value="changelogs/mysql/complete/root.changelog.xml"/>
@@ -49,6 +50,7 @@
                 dropFirst="false"
                 classpathref="classpath"
                 >
+            <changeLogProperty name="table.name" value="ant_param_table"/>
         </updateDatabase>
     </target>
 
@@ -83,7 +85,6 @@
     <target name="generateChangeLog" depends="prepare">
 
         <generateChangeLog
-                changeLogFile="${db.changelog.file}"
                 driver="${database.driver}"
                 url="${database.url}"
                 username="${database.username}"

@@ -1,0 +1,7 @@
+"id","name","icon"
+"1","Doctor Busy","/images/StatusBlue24.gif"
+"2","Doctor Left Patient","/images/StatusYellow24.gif"
+"3","Seen by Nurse","/images/StatusBlue24.gif"
+"4","Nurse Available","/images/StatusYellow24.gif"
+"5","In Use","/images/StatusRed24.gif"
+"6","Available","/images/StatusGreen24.gif"

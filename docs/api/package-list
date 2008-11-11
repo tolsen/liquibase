@@ -3,6 +3,7 @@ liquibase.ant
 liquibase.change
 liquibase.change.custom
 liquibase.commandline
+liquibase.csv
 liquibase.database
 liquibase.database.sql
 liquibase.database.structure
